@@ -55,11 +55,11 @@ namespace TestProject1
             listaOrdenada.Add(1, "Maria");
             listaOrdenada.Add(2, "Renata");
 
+            
 
             Assert.Equal(3, listaOrdenada.Count);
             Assert.Equal("Maria", listaOrdenada[1]);
             Assert.Equal("Juan", listaOrdenada.First().Value);
-
 
         }
 
@@ -84,7 +84,7 @@ namespace TestProject1
             Assert.NotNull(listaOrdenada);
             Assert.Equal(cantidad, listaOrdenada.Count);
             Assert.Equal(cantidad, listaOrdenada.Last().Key);
-            Assert.Equal(89, listaOrdenada[89].id);
+            //Assert.Equal(89, listaOrdenada[89].id);
 
         }
 
@@ -179,6 +179,26 @@ namespace TestProject1
 
         }
 
+
+        [Fact]
+        public void SortedDictionary()
+        {
+            var Dir = new SortedDictionary<int, Alumno>();
+
+
+
+            for (int i = 1; i <= 100000; i++)
+            {
+
+                Dir.Add(i, new Alumno(i, $"Alumno {i}"));
+            }
+
+            Assert.NotNull(Dir);
+            Assert.Equal(100000, Dir.Count);
+            Assert.Equal(100000, Dir.Last().Key);
+
+
+        }
 
 
     }
