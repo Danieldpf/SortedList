@@ -180,22 +180,51 @@ namespace TestProject1
         }
 
 
-        [Fact]
-        public void SortedDictionary()
+        [Theory]
+        [InlineData(100)]
+        [InlineData(1000)]
+        [InlineData(10000)]
+        [InlineData(100000)]
+        public void SortedDictionary(int cantidad)
         {
             var Dir = new SortedDictionary<int, Alumno>();
 
 
 
-            for (int i = 1; i <= 100000; i++)
+            for (int i = 1; i <= cantidad; i++)
             {
 
                 Dir.Add(i, new Alumno(i, $"Alumno {i}"));
             }
 
             Assert.NotNull(Dir);
-            Assert.Equal(100000, Dir.Count);
-            Assert.Equal(100000, Dir.Last().Key);
+            Assert.Equal(cantidad, Dir.Count);
+            Assert.Equal(cantidad, Dir.Last().Key);
+
+
+        }
+
+
+        [Theory]
+        [InlineData(100)]
+        [InlineData(1000)]
+        [InlineData(10000)]
+        [InlineData(100000)]
+        public void SortedDictionaryInvertido(int cantidad)
+        {
+            var Dir = new SortedDictionary<int, Alumno>();
+
+
+
+            for (int i = cantidad; i >= 1; i--)
+            {
+
+                Dir.Add(i, new Alumno(i, $"Alumno {i}"));
+            }
+
+            Assert.NotNull(Dir);
+            Assert.Equal(cantidad, Dir.Count);
+            Assert.Equal(cantidad, Dir.Last().Key);
 
 
         }
